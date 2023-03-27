@@ -1,0 +1,240 @@
+/* Global Rules */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  --main-color: #4c9bd5;
+  --sec-color: #e3b919;
+  --txt-color: #888a91;
+  --main-border-radius: 30px;
+}
+body {
+  background-color: #8ec5fc;
+  background-image: linear-gradient(
+    62deg,
+    #8ec5fc 0%,
+    #e0c3fc 55%,
+    #b6aae5 100%
+  );
+  font-family: "Raleway", sans-serif;
+}
+ul {
+  list-style: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+.app {
+  width: calc(100% - 4vh);
+  min-height: 96vh;
+  margin: 2vh auto;
+  background: linear-gradient(
+    to right top,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.9)
+  );
+  border-radius: var(--main-border-radius);
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 730px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 950px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+/* End Global Rules}*/
+
+/* Header */
+.header {
+  padding-top: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo {
+  color: var(--main-color);
+  font-weight: 700;
+  font-size: 25px;
+}
+.header ul {
+  display: flex;
+}
+.header ul a {
+  color: #888a91;
+  font-weight: 600;
+  font-size: 15px;
+  margin-left: 30px;
+}
+.header ul a:first-child {
+  color: var(--main-color);
+}
+
+/* Main */
+.main {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: center;
+  gap: 20px;
+}
+@media (min-width: 992px) {
+  .main {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+@media (min-width: 1200px) {
+  .main {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+}
+.box {
+  border-radius: var(--main-border-radius);
+}
+
+/* Weather Box */
+.weather.box {
+  position: relative;
+  min-height: 400px;
+  background: linear-gradient(to left bottom, #52b7f5, #249ae0);
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 20px;
+  padding-top: 20px;
+}
+.search input {
+  width: calc(100% - 40px);
+  color: var(--txt-color);
+  padding: 10px 25px;
+  margin-right: 16px;
+  font-size: 18px;
+}
+.search button {
+  width: 40px;
+  cursor: pointer;
+}
+.search input,
+.search button {
+  border: none;
+  border-radius: var(--main-border-radius);
+  outline: none;
+  background: #ede6fe;
+  height: 40px;
+}
+.search button img {
+  width: 50%;
+}
+
+.details {
+  visibility: hidden;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  color: white;
+}
+.weather-details {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.weather-icon {
+  width: 150px;
+}
+.weather-details .temp {
+  position: relative;
+  font-size: 90px;
+  font-weight: 300;
+}
+.weather-details .temp::after {
+  content: "°C";
+  position: absolute;
+  top: 30px;
+  right: -25px;
+  font-size: 30px;
+  font-weight: 500;
+}
+.weather-details .city {
+  font-size: 40px;
+  font-weight: 300;
+  margin-top: -20px;
+}
+.weather-ex-details {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.col {
+  text-align: center;
+  margin-bottom: 7px;
+}
+.col img {
+  width: 50px;
+}
+.col p:first-of-type {
+  font-weight: bold;
+}
+
+.loader {
+  z-index: 9;
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  border: 20px solid #eaf0f6;
+  border-radius: 50%;
+  border-top: 20px solid var(--main-color);
+  width: 200px;
+  height: 200px;
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-txt {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 25px;
+  color: white;
+  line-height: 1.7;
+}
